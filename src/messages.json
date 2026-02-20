@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Message from User123",
+    "content": "Hello, I hope you are doing well. I wanted to check in and see how things are going.",
+    "received": "10 minutes ago"
+  },
+  {
+    "title": "Message from SecretAdmirer",
+    "content": "I really appreciated your recent post. It was insightful and well written.",
+    "received": "2 hours ago"
+  },
+  {
+    "title": "Message from MysteryGuest",
+    "content": "Could you please share any book recommendations you would suggest?",
+    "received": "1 day ago"
+  },
+  {
+    "title": "Message from ProjectLead",
+    "content": "Please let me know your availability for a brief meeting to discuss the next steps.",
+    "received": "2 days ago"
+  },
+  {
+    "title": "Message from SupportTeam",
+    "content": "We are following up to ensure your recent request was resolved successfully.",
+    "received": "3 days ago"
+  }
+]
