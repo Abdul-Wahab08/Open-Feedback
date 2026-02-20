@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
@@ -8,7 +7,6 @@ import {
 } from "@/components/ui/carousel"
 import messages from "@/messages.json"
 import Autoplay from "embla-carousel-autoplay";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Link2, MessageSquare, ShieldCheck } from "lucide-react";
