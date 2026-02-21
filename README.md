@@ -27,7 +27,8 @@ Open Feedback is a full-stack anonymous messaging platform built with Next.js, M
 ### 🔎 Smart Username Search
 - Search users by unique username
 - Debounced search for performance
-- Dynamic public profile route: `/u/[username]`
+- Prevents duplicate usernames during registration
+- Clicking search result opens public profile
 
 ### 🤖 AI Message Suggestions
 - AI generates friendly message ideas
@@ -58,7 +59,7 @@ Open Feedback is a full-stack anonymous messaging platform built with Next.js, M
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/open-feedback.git
+git clone https://github.com/Abdul-Wahab08/open-feedback.git
 cd open-feedback
 ```
 ### 2️⃣ Install dependencies
