@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Open Feedback
 
-## Getting Started
+Open Feedback is a full-stack anonymous messaging platform built with Next.js, MongoDB, and NextAuth. It allows anyone to send anonymous messages to registered users while maintaining strong authentication, privacy, and AI-powered interaction.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+### 🔐 Authentication & Security
+- User registration with **6-digit email verification**
+- Secure password hashing using **bcrypt**
+- Login with **Credentials, Google, and GitHub** via NextAuth
+- Only verified users can receive messages
+- Password change functionality
+
+### 💬 Anonymous Messaging
+- Send messages without revealing identity
+- Messages stored securely per user
+- Users can delete unwanted messages
+- Toggle to accept or stop receiving messages
+
+### 📊 User Dashboard
+- View all anonymous messages in one place
+- Delete messages
+- Manage account settings
+
+### 🔎 Smart Username Search
+- Search users by unique username
+- Debounced search for performance
+- Dynamic public profile route: `/u/[username]`
+
+### 🤖 AI Message Suggestions
+- AI generates friendly message ideas
+- Helps users start conversations
+- Powered by **Google Generative AI (Gemini)**
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- Next.js (App Router)
+- React
+- Tailwind CSS
+
+### Backend
+- Next.js Route Handlers
+- MongoDB with Mongoose
+- NextAuth for authentication
+
+### Services
+- Resend (email verification)
+- Google Generative AI (message suggestions)
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/open-feedback.git
+cd open-feedback
+```
+### 2️⃣ Install dependencies
+```bash
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3️⃣ Create .env.local file
+## Add the following environment variables:
+```bash
+MONGODB_URI=
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+RESEND_API_KEY=
+GOOGLE_GENERATIVE_AI_API_KEY=
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4️⃣ Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 5️⃣ Open in browser
+```bash
+http://localhost:3000
+```
