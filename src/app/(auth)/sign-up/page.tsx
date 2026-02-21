@@ -50,7 +50,6 @@ function SigUpPage() {
                 setUsernameMessage('')
                 try {
                     const response = await axios.get<apiResponse>(`/api/check-username-unique?username=${username}`)
-                    console.log("Response of unique username: ", response)
                     setUsernameMessage(response.data.message)
                 } catch (error) {
                     const axiosError = error as AxiosError<apiResponse>

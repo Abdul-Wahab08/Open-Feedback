@@ -81,7 +81,6 @@ function page({username}: {username: string}) {
         setMessages(arr)
       }
     } catch (error: any) {
-      console.log("Error occurs while suggesting messages", error)
       toast.error(error?.message || "Something went wrong while suggesting messages")
     } finally {
       setIsSuggesting(false)
