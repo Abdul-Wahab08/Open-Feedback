@@ -40,7 +40,7 @@ function Navbar() {
   let controller: AbortController
 
   const debounced = useDebounceCallback(async (user: string) => {
-    if (!user) {
+    if (!user || user.length === 0) {
       setSearchedUsers([])
       setShowUsername(false)
       setIsFound(false)
@@ -55,7 +55,6 @@ function Navbar() {
       const response = await axios.get(`/api/get-users?username=${user}`, {
         signal: controller.signal
       })
-      console.log("Result of fetching users: ", response)
       setIsFound(false)
       setSearchedUsers(response.data.users)
     } catch (error) {
@@ -72,13 +71,19 @@ function Navbar() {
   }, 400)
 
   const onSubmit = (data: z.infer<typeof searchUserSchema>) => {
+    if (!data.searchUser || data.searchUser.length === 0) {
+      return
+    }
     setShowUsername(false)
     inputRef.current?.blur()
     router.push(`/u/${data.searchUser}`)
   }
 
   const handleClick = (username: string) => {
+    if (!username || username.length === 0) return
     form.setValue("searchUser", username)
+    setSearchedUsers([])
+    setShowUsername(false)
     inputRef.current?.blur()
     router.push(`/u/${username}`)
   }
@@ -88,7 +93,7 @@ function Navbar() {
   const username = params.username as string || undefined
 
   useEffect(() => {
-    if (!username) return
+    if (!username || username.length === 0) return
     form.setValue("searchUser", username)
     setSearchedUsers([])
     setShowUsername(false)
@@ -104,7 +109,6 @@ function Navbar() {
     const el = listRef.current.children[active] as HTMLElement
     el?.scrollIntoView({ block: "nearest" })
   }, [active])
-
 
   return (
     <nav className="p-3 md:p-4 shadow-md bg-black/95 text-white">
@@ -168,7 +172,6 @@ function Navbar() {
                       className="h-10"
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -177,11 +180,13 @@ function Navbar() {
         </Form>
         {showUsername && searchedUsers.length > 0 && (
           <div className="w-full max-w-md rounded-md border bg-background p-2 shadow-sm">
-            <div ref={listRef} className="flex flex-col gap-2 max-h-60 overflow-y-auto no-scrollbar">
+            <div ref={listRef} role="listbox" className="flex flex-col gap-2 max-h-60 overflow-y-auto no-scrollbar">
               {searchedUsers.map((username, index) => (
                 <Button
                   key={username}
                   variant="ghost"
+                  role="option"
+                  aria-selected={active === index}
                   className={`justify-start text-left text-black hover:bg-muted ${active === index ? "bg-muted border-black border-2" : ""}`}
                   onClick={() => { handleClick(username) }}
                 >
