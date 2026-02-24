@@ -102,8 +102,8 @@ function SignInPage() {
         <div className='flex justify-center items-center flex-col gap-2 font-semibold'>
           <span className='font-semibold'>OR SIGN IN WITH</span>
           <div className='w-full flex justify-around items-center flex-row gap-2'>
-          <Button className='w-1/2 py-5' onClick={() => signIn("google", { callbackUrl: "http://localhost:3000/dashboard" })} variant="outline"> Google <Chrome /> </Button>
-          <Button className='w-1/2 py-5' onClick={() => signIn("github", { callbackUrl: "http://localhost:3000/dashboard" })} variant="outline"> Github <Github /> </Button>
+          <Button className='w-1/2 py-5' onClick={() => signIn("google", { callbackUrl: "/dashboard" })} variant="outline"> Google <Chrome /> </Button>
+          <Button className='w-1/2 py-5' onClick={() => signIn("github", { callbackUrl: "/dashboard" })} variant="outline"> Github <Github /> </Button>
           </div>
         </div>
         <div className="text-center mt-4">
