@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 import { sendVerficationEmail } from "@/app/helpers/sendVerificationEmail";
 
 export async function POST(request: Request) {
-     dbConnect()
+    await dbConnect()
 
     try {
         const { username, email, password } = await request.json()
@@ -73,9 +73,8 @@ export async function POST(request: Request) {
 
             await newUser.save()
         }
-    
+
         const emailVerificationResponse = await sendVerficationEmail(email, username, verificationCode)
-        console.log("Email Verification Response", emailVerificationResponse)
 
         if (!emailVerificationResponse.success) {
             return Response.json(
@@ -100,7 +99,6 @@ export async function POST(request: Request) {
         )
 
     } catch (error) {
-        console.log("Error occurs while registering the user", error)
         return Response.json(
             {
                 success: false,

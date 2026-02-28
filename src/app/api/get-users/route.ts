@@ -49,7 +49,6 @@ export async function GET(request: Request) {
             }
         )
     } catch (error) {
-        console.log("Error occurs while finding users", error)
         return Response.json(
             {
                 success: false,

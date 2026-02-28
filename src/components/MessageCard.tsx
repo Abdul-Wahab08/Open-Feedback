@@ -32,9 +32,7 @@ function MessageCard({ message, onDeleteMessage }: cardProps) {
 
     const handleDeleteMessage = async () => {
         try {
-            console.log(message)
             const response = await axios.delete<apiResponse>(`/api/delete-message/${message._id}`)
-            console.log("Response: ", response.data)
             if (!response.data.success) {
                 toast.error(response.data.message)
                 return

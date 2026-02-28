@@ -37,7 +37,6 @@ export async function POST() {
             },
         })
     } catch (error: any) {
-        console.error('Gemini API Error:', error);
         return NextResponse.json(
             { error: error.message || 'An unexpected error occurred' },
             { status: 500 }

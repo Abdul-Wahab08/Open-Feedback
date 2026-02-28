@@ -41,11 +41,9 @@ export async function POST(request: Request) {
         }
 
         const result = verificationCodeSchema.safeParse({ verifyCode: { code: code } })
-        console.log("Result of safeparsing verify code in our zod schema: ", result)
 
         if (!result.success) {
             const verifyCodeErrors = z.treeifyError(result.error)
-            console.log("VerifyCodeErrors", verifyCodeErrors)
             const verifyCodeErrorsTreeifyError = verifyCodeErrors.properties?.verifyCode?.properties?.code?.errors || []
             return Response.json(
                 {
@@ -97,7 +95,6 @@ export async function POST(request: Request) {
         }
 
     } catch (error) {
-        console.log("Error occurs while verifying code ", error)
         return Response.json(
             {
                 success: false,

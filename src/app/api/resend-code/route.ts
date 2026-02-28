@@ -66,7 +66,6 @@ export async function POST(request: Request) {
             }
         )
     } catch (error) {
-        console.log("Error Occurs while resending verification code", error)
         return Response.json(
             {
                 success: false,

@@ -94,7 +94,6 @@ export async function PATCH(req: Request) {
         )
 
     } catch (error) {
-        console.log("Error occurs while updating the password ", error)
         return Response.json(
             {
                 success: false,

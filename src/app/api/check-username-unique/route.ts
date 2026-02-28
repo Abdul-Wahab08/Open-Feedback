@@ -8,7 +8,7 @@ const usernameValidationQuerySchema = z.object({
 })
 
 export async function GET(req: Request) {
-    dbConnect()
+    await dbConnect()
 
     try {
         const { searchParams } = new URL(req.url)
@@ -18,7 +18,6 @@ export async function GET(req: Request) {
         }
 
         const result = usernameValidationQuerySchema.safeParse(queryParams)
-        console.log("Result of safeparsing our username in our zod schema: ", result)
 
         if (!result.success) {
             const usernameValidationError = result.error.format().username?._errors || []

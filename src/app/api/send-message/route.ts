@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 
 export async function POST(request: Request) {
-    dbConnect()
+    await dbConnect()
 
     try {
         const { username, content } = await request.json()
@@ -95,7 +95,6 @@ export async function POST(request: Request) {
             }
         )
     } catch (error) {
-        console.log("Error occurs while sending the message ", error)
         return Response.json(
             {
                 success: false,

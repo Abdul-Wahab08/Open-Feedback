@@ -67,7 +67,6 @@ export async function GET(request: Request) {
             }
         )
     } catch (error) {
-        console.log("Error occurs while getting user's messages ", error)
         return Response.json(
             {
                 success: false,

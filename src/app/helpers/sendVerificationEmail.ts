@@ -20,7 +20,6 @@ export const sendVerficationEmail = async (email: string, username: string, veri
 
         return { success: true, message: "Verification email sent Successfully" }
     } catch (error) {
-        console.log("Error while sending verification email ", error)
         return { success: false, message: "Failed to send verification email" }
     }
 }
