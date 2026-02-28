@@ -21,7 +21,7 @@ export default function Home() {
         </section>
 
         <section>
-          <Carousel className="w-full max-w-xs" plugins={[Autoplay({ delay: 5000, stopOnMouseEnter: false })]} >
+          <Carousel aria-label="User feedback carousel" className="w-full max-w-xs" plugins={[Autoplay({ delay: 5000, stopOnMouseEnter: false })]} >
             <CarouselContent>
               {messages.map((message, index) => (
                 <CarouselItem key={index}>
@@ -31,7 +31,7 @@ export default function Home() {
                         <h2 className="text-lg font-bold">{message.title}</h2>
                         <p className="text-center">{message.content}</p>
                       </CardContent>
-                      <p className="w-1/2 px-4 py-2 rounded-lg ml-2 mb-6 bg-black text-white">{message.received} </p>
+                      <p className="self-start mx-6 mb-4 px-3 py-1 text-sm rounded-md bg-black text-white">{message.received} </p>
                     </Card>
                   </div>
                 </CarouselItem>

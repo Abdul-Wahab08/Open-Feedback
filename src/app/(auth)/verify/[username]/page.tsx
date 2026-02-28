@@ -5,7 +5,7 @@ import { verifyCodeSchema } from '@/schemas/verifyCodeSchema';
 import { apiResponse } from '@/types/apiResponse';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios, { AxiosError } from 'axios';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Repeat } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -46,6 +46,18 @@ function VerifyPage() {
     }
   }
 
+  const handleResendCode = async ()=>{
+    try {
+      const response = await axios.post<apiResponse>("/api/resend-code", {
+        username: params.username
+      })
+      toast.success(response.data.message)
+    } catch (error) {
+      const axiosError = error as AxiosError<apiResponse>
+      toast.error(axiosError.response?.data.message)
+    }
+  }
+
   return (
     <div className='flex justify-center items-center min-h-screen bg-gray-100'>
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
@@ -53,7 +65,7 @@ function VerifyPage() {
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Join Open Feedback
           </h1>
-          <p className="mb-4 font-bold">Complete your Verification</p>
+          <p className="mb-4 font-bold">We sent a 6-digit verification code to your email. The code expires in 1 hour.</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -62,7 +74,7 @@ function VerifyPage() {
               name="code"
               render={({ field }) => (
                 <FormItem >
-                  <FormLabel>Code</FormLabel>
+                  <FormLabel>Enter the code</FormLabel>
                   <FormControl>
                     <InputOTP maxLength={6} {...field}>
                       <InputOTPGroup>
@@ -92,6 +104,14 @@ function VerifyPage() {
             </Button>
           </form>
         </Form>
+          <div className="text-center mt-4">
+          <p className='flex flex-col'>
+            Code expired or didn't receive it?
+            <Button onClick={handleResendCode} variant="link" className="cursor-pointer">
+              Resend Code <Repeat />
+            </Button>
+          </p>
+        </div>
       </div>
     </div>
   )
